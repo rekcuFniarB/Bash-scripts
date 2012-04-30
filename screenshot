@@ -11,12 +11,12 @@ if [[ $1 == '-h' || $1 == '--help' ]]
     echo "Make screenshot, upload it to the http://img.flashtux.org and put link to the clipboard. Useful with keyboard shortcuts.
     
 Usage:
-    Screenshot
+    screenshot
         Makes screenshot of the whole screen.
-    Screenshot -ub
+    screenshot -ub
         Makes screenshot of the current window.
-    Screenshot -h
-    Screenshot --help
+    screenshot -h
+    screenshot --help
         Displays this help.
     Also accepts scrot options.
 
