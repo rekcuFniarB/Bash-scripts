@@ -1,0 +1,41 @@
+#!/bin/bash
+
+##   Makes screenshot of the screen or a window, uploads it to the img.fhashtux.org and puts link to the clipboard.
+##   Depencies: scrot, xclip, curl and kdialog (or notify-send instead).
+## 
+##   Written by BrainFucker ( https://launchpad.net/~retratserif ).
+##   This script is licensed under the WTFPL license.
+
+if [[ $1 == '-h' || $1 == '--help' ]]
+  then
+    echo "Make screenshot, upload it to the http://img.flashtux.org and put link to the clipboard. Useful with keyboard shortcuts.
+    
+Usage:
+    Screenshot
+        Makes screenshot of the whole screen.
+    Screenshot -ub
+        Makes screenshot of the current window.
+    Screenshot -h
+    Screenshot --help
+        Displays this help.
+
+Written by BrainFucker ( https://launchpad.net/~retratserif ).
+This script is licensed under the WTFPL license."
+    exit 0
+fi
+echo "Doing shot..."
+
+Link=`scrot "$@" -q 30 -e 'curl -s -F "form=1" -F "MAX_FILE_SIZE=5242880" -F "postimg=1" -F "upload=UPLOAD!" -F "filename=@$f;type=image/png" -w %{redirect_url} -e http://img.flashtux.org/ http://img.flashtux.org/index.php && rm $f'`
+
+# Editing link to match dirrect link to the picture
+Link=${Link//org\/img/org\/upload\/img}
+
+# Put link to the clipboard
+echo -n $Link|xclip
+
+# Inform when link is ready to paste.
+if [[ $(which kdialog) ]]
+  then kdialog --passivepopup 'Screenshot done!' 3
+elif [[ $(which notify-send) ]]
+  then notify-send -t 3000 'Sreenshot done!'
+fi
