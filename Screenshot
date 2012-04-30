@@ -18,6 +18,7 @@ Usage:
     Screenshot -h
     Screenshot --help
         Displays this help.
+    Also accepts scrot options.
 
 Written by BrainFucker ( https://launchpad.net/~retratserif ).
 This script is licensed under the WTFPL license."
