@@ -2,7 +2,7 @@
 
 ## Paste text to http://paste.kde.org
 ## Written by BrainFucker ( https://github.com/rekcuFniarB/Bash-scripts )
-## Licensed under the WTFPL license.
+## Licensed under the GPL3 license.
 ## 
 ## Usage: cat file.txt | kpaste [format]
 ## Example: cat script.sh | kpaste bash

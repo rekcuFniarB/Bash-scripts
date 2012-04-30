@@ -4,7 +4,7 @@
 ##   Depencies: scrot, xclip, curl and kdialog (or notify-send instead).
 ## 
 ##   Written by BrainFucker ( https://github.com/rekcuFniarB/Bash-scripts ).
-##   This script is licensed under the WTFPL license.
+##   This script is licensed under the GPL3 license.
 
 if [[ $1 == '-h' || $1 == '--help' ]]
   then
