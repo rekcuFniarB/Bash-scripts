@@ -25,6 +25,8 @@ This script is licensed under the GPLv3 license."
     exit 0
 fi
 
+cd /tmp
+
 Link=`scrot "$@" -q 30 -e 'curl -s -F "form=1" -F "MAX_FILE_SIZE=5242880" -F "postimg=1" -F "upload=UPLOAD!" -F "filename=@$f;type=image/png" -w %{redirect_url} -e http://img.flashtux.org/ http://img.flashtux.org/index.php && rm $f'`
 
 # Editing link to match dirrect link to the picture
@@ -37,5 +39,5 @@ echo -n $Link|xclip
 if [[ $(which kdialog) ]]
   then kdialog --passivepopup 'Screenshot done!' 3
 elif [[ $(which notify-send) ]]
-  then notify-send -t 3000 'Sreenshot done!'
+  then notify-send -t 3000 'Screenshot done!'
 fi
