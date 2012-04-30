@@ -27,7 +27,7 @@ fi
 
 cd /tmp
 
-Link=`scrot "$@" -q 30 -e 'curl -s -F "form=1" -F "MAX_FILE_SIZE=5242880" -F "postimg=1" -F "upload=UPLOAD!" -F "filename=@$f;type=image/png" -w %{redirect_url} -e http://img.flashtux.org/ http://img.flashtux.org/index.php && rm $f'`
+Link=`scrot "$@" -q 30 -e 'curl -s -F "form=1" -F "MAX_FILE_SIZE=5242880" -F "postimg=1" -F "upload=UPLOAD!" -F "filename=@$f;type=image/png" -A "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:12.0) Gecko/20100101 Firefox/12.0" -w %{redirect_url} -e http://img.flashtux.org/ http://img.flashtux.org/index.php && rm $f'`
 
 # Editing link to match direct link to the picture
 Link=${Link//org\/img/org\/upload\/img}
