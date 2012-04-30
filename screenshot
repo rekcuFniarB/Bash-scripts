@@ -21,7 +21,7 @@ Usage:
     Also accepts scrot options.
 
 Written by BrainFucker ( https://github.com/rekcuFniarB/Bash-scripts ).
-This script is licensed under the WTFPL license."
+This script is licensed under the GPLv3 license."
     exit 0
 fi
 
