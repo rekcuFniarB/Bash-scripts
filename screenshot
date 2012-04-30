@@ -3,7 +3,7 @@
 ##   Makes screenshot of the screen or a window, uploads it to the img.fhashtux.org and puts link to the clipboard.
 ##   Depencies: scrot, xclip, curl and kdialog (or notify-send instead).
 ## 
-##   Written by BrainFucker ( https://launchpad.net/~retratserif ).
+##   Written by BrainFucker ( https://github.com/rekcuFniarB/Bash-scripts ).
 ##   This script is licensed under the WTFPL license.
 
 if [[ $1 == '-h' || $1 == '--help' ]]

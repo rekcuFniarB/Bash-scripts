@@ -1,0 +1,28 @@
+#!/bin/bash
+
+## Paste text to http://paste.kde.org
+## Written by BrainFucker ( https://github.com/rekcuFniarB/Bash-scripts )
+## Licensed under the WTFPL license.
+## 
+## Usage: cat file.txt | kpaste [format]
+## Example: cat script.sh | kpaste bash
+## 
+## Depencies: curl, xclip, notify-send
+
+UA='Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0'
+In="$(cat /dev/stdin)"
+# echo "In: $In"
+if  [[ $1 ]]
+  then Format="$1"
+  else Format="text"
+fi
+
+Link="$(curl -s -F "paste_user=BrainFucker" -F "paste_lang=$Format" -F "paste_expire=0" -F "paste_data=$In" -F "paste_submit=Paste" -A "$UA" -w %{redirect_url} -e http://paste.kde.org/ http://paste.kde.org/)" 
+
+if [[ $DISPLAY ]]
+  then 
+    echo -n "$Link" | xclip
+    notify-send -t 3000 -i kate Pasted "$Link"
+fi
+
+echo "$Link"
