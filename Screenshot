@@ -24,7 +24,6 @@ Written by BrainFucker ( https://launchpad.net/~retratserif ).
 This script is licensed under the WTFPL license."
     exit 0
 fi
-echo "Doing shot..."
 
 Link=`scrot "$@" -q 30 -e 'curl -s -F "form=1" -F "MAX_FILE_SIZE=5242880" -F "postimg=1" -F "upload=UPLOAD!" -F "filename=@$f;type=image/png" -w %{redirect_url} -e http://img.flashtux.org/ http://img.flashtux.org/index.php && rm $f'`
 
