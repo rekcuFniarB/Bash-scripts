@@ -20,7 +20,7 @@ Usage:
         Displays this help.
     Also accepts scrot options.
 
-Written by BrainFucker ( https://launchpad.net/~retratserif ).
+Written by BrainFucker ( https://github.com/rekcuFniarB/Bash-scripts ).
 This script is licensed under the WTFPL license."
     exit 0
 fi
