@@ -17,7 +17,7 @@ if  [[ $1 ]]
   else Format="text"
 fi
 
-Link="$(curl -s -F "paste_user=BrainFucker" -F "paste_lang=$Format" -F "paste_expire=0" -F "paste_data=$In" -F "paste_submit=Paste" -A "$UA" -w %{redirect_url} -e http://paste.kde.org/ http://paste.kde.org/)" 
+Link="$(curl -s -F "paste_user=$USER" -F "paste_lang=$Format" -F "paste_expire=0" -F "paste_data=$In" -F "paste_submit=Paste" -A "$UA" -w %{redirect_url} -e http://paste.kde.org/ http://paste.kde.org/)" 
 
 if [[ $DISPLAY ]]
   then 
