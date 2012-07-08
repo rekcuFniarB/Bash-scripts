@@ -10,20 +10,26 @@
 ## Depencies: curl, xclip, notify-send
 
 UA='Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:12.0) Gecko/20100101 Firefox/12.0'
-In="$(cat /dev/stdin)"
-# echo "In: $In"
 if  [[ $1 ]]
+  # If code language not specified, senc as plain text.
   then Format="$1"
   else Format="text"
 fi
 
-Link="$(curl -s -F "paste_user=$USER" -F "paste_lang=$Format" -F "paste_expire=0" -F "paste_data=$In" -F "paste_submit=Paste" -A "$UA" -w %{redirect_url} -e http://paste.kde.org/ http://paste.kde.org/)" 
+Link="$(curl -s -d "paste_user=BrainFucker" -d "paste_lang=$Format" -d "paste_expire=0" --data-urlencode paste_data@- -d "paste_submit=Paste" -A "$UA" -w %{redirect_url} -e http://paste.kde.org/ http://paste.kde.org/)" 
+
+if [[ ! $(echo "$Link"|wc -l) == 1 ]]
+  # When error occurs, returned value may contain html page, not link.
+  # Don't display it if so.
+  then Link="Error!"
+fi
 
 if [[ $DISPLAY ]]
   then 
+  # If X server is working, put the link to the clipboard and notify user when ready.
     echo -n "$Link" | xclip
     if [[ $(which notify-send) ]]
-      then notify-send -t 3000 -i kate Pasted "$Link"
+      then notify-send -t 3000 -i kate Kpaste "$Link"
     elif [[ $(which kdialog) ]]
       then kdialog --passivepopup "$Link" 3
     fi
