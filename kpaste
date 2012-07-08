@@ -11,7 +11,7 @@
 
 UA='Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:12.0) Gecko/20100101 Firefox/12.0'
 if  [[ $1 ]]
-  # If code language not specified, senc as plain text.
+  # If code language not specified, send as plain text.
   then Format="$1"
   else Format="text"
 fi
