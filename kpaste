@@ -16,7 +16,7 @@ if  [[ $1 ]]
   else Format="text"
 fi
 
-Link="$(curl -s -d "paste_user=BrainFucker" -d "paste_lang=$Format" -d "paste_expire=0" --data-urlencode paste_data@- -d "paste_submit=Paste" -A "$UA" -w %{redirect_url} -e http://paste.kde.org/ http://paste.kde.org/)" 
+Link="$(curl -s -d "paste_user=$(whoami)" -d "paste_lang=$Format" -d "paste_expire=0" --data-urlencode paste_data@- -d "paste_submit=Paste" -A "$UA" -w %{redirect_url} -e http://paste.kde.org/ http://paste.kde.org/)" 
 
 if [[ ! $(echo "$Link"|wc -l) == 1 ]]
   # When error occurs, returned value may contain html page, not link.
